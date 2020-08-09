@@ -26,11 +26,7 @@ public class Animals {
 
 
 
-
-
-
-    public Animals(Long id,String name,String kind,String sex) {
-        this.id = id;
+    public Animals(String name,String kind,String sex) {
         this.name = name;
         this.kind = kind;
         this.sex = sex;
