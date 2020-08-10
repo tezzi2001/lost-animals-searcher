@@ -2,7 +2,6 @@ package com.dataart.trainee.lostanimalsearcher.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -20,7 +19,7 @@ public class Role implements GrantedAuthority {
 
     String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany
     Set<User> users;
 
 

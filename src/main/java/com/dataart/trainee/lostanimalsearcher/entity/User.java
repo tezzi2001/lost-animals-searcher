@@ -26,12 +26,7 @@ public class User implements UserDetails {
 
     String password;
 
-    @ManyToMany(cascade={CascadeType.PERSIST})
-    @JoinTable(
-            name="user_role",
-            joinColumns=@JoinColumn(name="user_id"),
-            inverseJoinColumns=@JoinColumn(name="role_id")
-    )
+    @ManyToMany
     Set<Role> roles;
 
 
