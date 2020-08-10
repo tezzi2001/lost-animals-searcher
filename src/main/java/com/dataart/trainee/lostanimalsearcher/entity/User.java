@@ -4,10 +4,7 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
@@ -17,14 +14,22 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
+    Long Id;
+
     String login;
 
     String name;
 
     String password;
 
-    @ManyToMany
+    @ManyToMany(cascade={CascadeType.PERSIST})
+    @JoinTable(
+            name="user_role",
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id")
+    )
     Set<Role> roles;
+
 
     //TODO: Map with necessary class
     @OneToMany
@@ -33,6 +38,7 @@ public class User implements UserDetails {
     //TODO: Map with necessary class
     @OneToMany
     Set<?> ads_found;
+
 
 
     @Override
