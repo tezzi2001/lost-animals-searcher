@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
 public class UserDto {
     private String login;
     private String name;
+    private String email;
     private String password;
     private Set<Role> roles;
     private Set<LostAnimals> lostAnimals;
     private Set<FoundAnimals> foundAnimals;
 
     public User toUser() {
-        return new User(login, name, password, roles, lostAnimals, foundAnimals);
+        return new User(login, name, email, password, roles, lostAnimals, foundAnimals);
     }
 }
