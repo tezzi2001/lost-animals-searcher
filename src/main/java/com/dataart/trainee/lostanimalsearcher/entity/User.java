@@ -1,24 +1,24 @@
 package com.dataart.trainee.lostanimalsearcher.entity;
 
+import java.util.Collection;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
-
-
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Entity(name="users")
+@Entity(name = "users")
 public class User implements UserDetails {
-
     @Id
-    Long Id;
+    Long id;
 
     String login;
 
@@ -29,7 +29,6 @@ public class User implements UserDetails {
     @ManyToMany
     Set<Role> roles;
 
-
     //TODO: Map with necessary class
     @OneToMany
     Set<?> ads_lost;
@@ -37,8 +36,6 @@ public class User implements UserDetails {
     //TODO: Map with necessary class
     @OneToMany
     Set<?> ads_found;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
