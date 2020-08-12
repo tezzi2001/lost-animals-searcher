@@ -4,10 +4,10 @@ import com.dataart.trainee.lostanimalsearcher.entity.FoundAnimals;
 import com.dataart.trainee.lostanimalsearcher.entity.LostAnimals;
 import com.dataart.trainee.lostanimalsearcher.entity.Role;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
