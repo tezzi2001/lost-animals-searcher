@@ -24,28 +24,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+                .csrf()
+                    .disable()
                 .authorizeRequests()
-                .antMatchers("/")
-                .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/register")
-                .permitAll()
+                    .antMatchers("/register", "resetPassword").not().fullyAuthenticated()
+                    .antMatchers("/" , "/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .exceptionHandling()
-                .accessDeniedPage("/unauthorized")
+                    .exceptionHandling()
+                    .accessDeniedPage("/unauthorized")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/j_spring_security_check")
-                .failureUrl("/login?error")
-                .usernameParameter("j_login")
-                .passwordParameter("j_password")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                    .failureUrl("/login?error")
+                    .usernameParameter("login")
+                    .passwordParameter("password")
+                    .permitAll()
                 .and()
-                .logout()
-                .permitAll()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout");
+                    .logout()
+                    .permitAll()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout");
     }
 }
 
