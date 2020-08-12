@@ -18,21 +18,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity(name = "users")
 public class User implements UserDetails {
     @Id
-    String login;
+    private String login;
 
-    String name;
+    private String name;
 
-    String password;
+    private String password;
 
     @ManyToMany
-    Set<Role> roles;
+    private Set<Role> roles;
 
     @OneToMany
-    Set<LostAnimals> lostAnimals;
+    private Set<LostAnimals> lostAnimals;
 
-    //TODO: Map with necessary class
     @OneToMany
-    Set<?> ads_found;
+    private Set<FoundAnimals> foundAnimals;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

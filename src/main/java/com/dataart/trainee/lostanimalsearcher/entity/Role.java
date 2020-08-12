@@ -18,12 +18,12 @@ import org.springframework.security.core.GrantedAuthority;
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
 
     @ManyToMany
-    Set<User> users;
+    private Set<User> users;
 
     public Role(String roleName) {
         this.name = roleName;
