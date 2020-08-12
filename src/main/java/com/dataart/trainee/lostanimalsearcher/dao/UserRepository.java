@@ -1,4 +1,4 @@
-package com.dataart.trainee.lostanimalsearcher.repository;
+package com.dataart.trainee.lostanimalsearcher.dao;
 
 import com.dataart.trainee.lostanimalsearcher.entity.Role;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
