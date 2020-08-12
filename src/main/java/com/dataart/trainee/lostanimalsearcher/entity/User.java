@@ -18,8 +18,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity(name = "users")
 public class User implements UserDetails {
     @Id
-    Long id;
-
     String login;
 
     String name;
@@ -29,9 +27,8 @@ public class User implements UserDetails {
     @ManyToMany
     Set<Role> roles;
 
-    //TODO: Map with necessary class
     @OneToMany
-    Set<?> ads_lost;
+    Set<LostAnimals> lostAnimals;
 
     //TODO: Map with necessary class
     @OneToMany
