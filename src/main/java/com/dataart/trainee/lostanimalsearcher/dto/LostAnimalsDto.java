@@ -1,6 +1,5 @@
 package com.dataart.trainee.lostanimalsearcher.dto;
 
-import com.dataart.trainee.lostanimalsearcher.entity.LostAnimals;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
 import java.io.BufferedOutputStream;
 import java.io.File;
