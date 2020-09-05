@@ -1,7 +1,5 @@
 package com.dataart.trainee.lostanimalsearcher.dto;
 
-import com.dataart.trainee.lostanimalsearcher.entity.FoundAnimals;
-import com.dataart.trainee.lostanimalsearcher.entity.LostAnimals;
 import com.dataart.trainee.lostanimalsearcher.entity.Role;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
 import java.util.Set;
