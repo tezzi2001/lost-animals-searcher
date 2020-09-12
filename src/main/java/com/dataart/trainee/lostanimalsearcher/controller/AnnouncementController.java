@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 * */
 
 
-@Controller
+@RestController
 public class AnnouncementController {
 
     private AnnouncementService announcementService;
