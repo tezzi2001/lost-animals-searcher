@@ -74,7 +74,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return false;
     }
 
-    @Override
+    /*@Override
     public boolean closeAnnouncement(Announcement announcement) {
         if (announcement != null && announcement.getId() != null) {
             Optional<Announcement> announcementOptional = announcementRepository
@@ -87,7 +87,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
             }
         }
         return false;
-    }
+    }*/
 
     @Override
     public boolean deleteAnnouncement(Announcement announcement) {
