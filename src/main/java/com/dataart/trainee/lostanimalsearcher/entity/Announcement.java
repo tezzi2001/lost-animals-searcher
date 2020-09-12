@@ -23,7 +23,7 @@ public class Announcement {
     @Enumerated(EnumType.STRING)
     private AnnouncementType type;
 
-    private boolean isActive;
+    //private boolean isActive;
 
     private String content;
 
