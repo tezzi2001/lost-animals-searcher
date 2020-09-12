@@ -7,18 +7,25 @@ import com.dataart.trainee.lostanimalsearcher.entity.AnnouncementType;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
 import com.dataart.trainee.lostanimalsearcher.service.AnnouncementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class AnnouncementServiceImpl implements AnnouncementService {
 
-    @Autowired
-    AnnouncementRepository announcementRepository;
-    @Autowired
-    UserRepository userRepository;
+    private final AnnouncementRepository announcementRepository;
+    private final UserRepository userRepository;
 
+
+    @Autowired
+    public AnnouncementServiceImpl(AnnouncementRepository announcementRepository, UserRepository userRepository) {
+        this.announcementRepository = announcementRepository;
+        this.userRepository = userRepository;
+    }
 
     @Override
     public Announcement getAnnouncementById(Long id) {
