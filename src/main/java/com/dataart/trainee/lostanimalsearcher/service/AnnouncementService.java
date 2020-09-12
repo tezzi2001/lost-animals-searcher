@@ -14,7 +14,7 @@ public interface AnnouncementService {
     List<Announcement> getAllByUserIdAndType(Long userId, AnnouncementType type);
 
     boolean addAnnouncement(Announcement announcement);
-    boolean closeAnnouncement(Announcement announcement);
+    //boolean closeAnnouncement(Announcement announcement);
     boolean deleteAnnouncement(Announcement announcement);
 
 }
