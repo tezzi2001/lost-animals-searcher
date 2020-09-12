@@ -1,5 +1,7 @@
 package com.dataart.trainee.lostanimalsearcher.dto;
 
+import com.dataart.trainee.lostanimalsearcher.entity.Announcement;
+import com.dataart.trainee.lostanimalsearcher.entity.AnnouncementType;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -21,8 +23,8 @@ public class FoundAnimalsDto {
     private byte[] photo;
     private User user;
 
-    public FoundAnimals toFoundAnimals() {
-        return new FoundAnimals(id, title, content, photo, user);
+    public Announcement toFoundAnimals() {
+        return new Announcement(id, title, AnnouncementType.FOUND, content, photo, user);
     }
 
     public String getPhotoLink() {
