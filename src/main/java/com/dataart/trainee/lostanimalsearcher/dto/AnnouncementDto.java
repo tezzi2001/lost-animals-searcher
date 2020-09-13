@@ -3,28 +3,42 @@ package com.dataart.trainee.lostanimalsearcher.dto;
 import com.dataart.trainee.lostanimalsearcher.entity.Announcement;
 import com.dataart.trainee.lostanimalsearcher.entity.AnnouncementType;
 import com.dataart.trainee.lostanimalsearcher.entity.User;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FoundAnimalsDto {
+public class AnnouncementDto {
     private Long id;
+    private AnnouncementType type;
     private String title;
     private String content;
     private byte[] photo;
     private User user;
 
-    public Announcement toFoundAnimals() {
-        return new Announcement(id, AnnouncementType.FOUND, title, content, photo, user);
+
+    public static AnnouncementDto of(Long id, AnnouncementType type,
+                                     String title, String content, byte[] photo, User user) {
+        return new AnnouncementDto(id, type, title, content, photo, user);
+    }
+
+    public static AnnouncementDto of(Announcement announcement) {
+        return new AnnouncementDto(
+                announcement.getId(),
+                announcement.getType(),
+                announcement.getTitle(),
+                announcement.getContent(),
+                announcement.getPhoto(),
+                announcement.getUser()
+        );
+    }
+
+    public Announcement toAnnouncement() {
+        return new Announcement(id, type, title, content, photo, user);
     }
 
     public String getPhotoLink() {
@@ -36,4 +50,5 @@ public class FoundAnimalsDto {
         }
         return file.getAbsolutePath();
     }
+
 }

@@ -33,10 +33,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @OneToMany
-    private Set<LostAnimals> lostAnimals;
-
-    @OneToMany
-    private Set<FoundAnimals> foundAnimals;
+    private Set<Announcement> announcements;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
