@@ -1,9 +1,14 @@
 package com.dataart.trainee.lostanimalsearcher.controller;
 
+import com.dataart.trainee.lostanimalsearcher.dto.AnnouncementDto;
+import com.dataart.trainee.lostanimalsearcher.entity.AnnouncementType;
 import com.dataart.trainee.lostanimalsearcher.service.AnnouncementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*REST API interface for announcements (announcement - ANMT)
 *
@@ -36,55 +41,67 @@ public class AnnouncementController {
 
     /*Single announcement operations*/
     @GetMapping("/announcement/{announcementId}")
-    public String getAnnouncementById(@PathVariable Long announcementId) {
-        return null;
+    public AnnouncementDto getAnnouncementById(@PathVariable Long announcementId) {
+        return AnnouncementDto.of(announcementService.getAnnouncementById(announcementId));
     }
 
     @PostMapping("/announcement/add")
-    public String addAnnouncement() {
-        return null;
+    public boolean addAnnouncement(@ModelAttribute AnnouncementDto announcementDto) {
+        return announcementService.addAnnouncement(announcementDto.toAnnouncement());
     }
 
-    @PutMapping("/announcement/{announcementId}/close")
-    public String closeAnnouncement(@PathVariable Long announcementId) {
+    /*@PutMapping("/announcement/{announcementId}/close")
+    public AnnouncementDto closeAnnouncement(@PathVariable Long announcementId) {
         return null;
-    }
+    }*/
 
     @DeleteMapping("/announcement/{announcementId}/delete")
-    public String deleteAnnouncement(@PathVariable Long announcementId) {
-        return null;
+    public boolean deleteAnnouncement(@PathVariable Long announcementId) {
+        return announcementService.deleteAnnouncement(announcementService.getAnnouncementById(announcementId));
     }
 
 
     /*List of announcements operations*/
     @GetMapping("/announcements")
-    public String getAllAnnouncements() {
-        return null;
+    public List<AnnouncementDto> getAllAnnouncements() {
+        return announcementService.getAll().stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/announcements/found")
-    public String getAllFoundAnnouncements() {
-        return null;
+    public List<AnnouncementDto> getAllFoundAnnouncements() {
+        return announcementService.getAllByType(AnnouncementType.FOUND).stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/announcements/lost")
-    public String getAllLostAnnouncements() {
-        return null;
+    public List<AnnouncementDto> getAllLostAnnouncements() {
+        return announcementService.getAllByType(AnnouncementType.LOST).stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/announcements/{userId}")
-    public String getUserAnnouncements(@PathVariable String userId) {
-        return null;
+    public List<AnnouncementDto> getUserAnnouncements(@PathVariable Long userId) {
+        return announcementService.getAllByUserId(userId).stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/announcements/{userId}/found")
-    public String getUserFoundAnnouncements(@PathVariable String userId) {
-        return null;
+    public List<AnnouncementDto> getUserFoundAnnouncements(@PathVariable Long userId) {
+        return announcementService.getAllByUserIdAndType(userId, AnnouncementType.FOUND).stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/announcements/{userId}/lost")
-    public String getUserLostAnnouncements(@PathVariable String userId) {
-        return null;
+    public List<AnnouncementDto> getUserLostAnnouncements(@PathVariable Long userId) {
+        return announcementService.getAllByUserIdAndType(userId, AnnouncementType.LOST).stream()
+                .map(AnnouncementDto::of)
+                .collect(Collectors.toList());
     }
 
 }
