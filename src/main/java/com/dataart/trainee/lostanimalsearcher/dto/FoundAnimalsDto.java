@@ -24,7 +24,7 @@ public class FoundAnimalsDto {
     private User user;
 
     public Announcement toFoundAnimals() {
-        return new Announcement(id, title, AnnouncementType.FOUND, content, photo, user);
+        return new Announcement(id, AnnouncementType.FOUND, title, content, photo, user);
     }
 
     public String getPhotoLink() {

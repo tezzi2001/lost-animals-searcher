@@ -18,10 +18,10 @@ public class Announcement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-
     @Enumerated(EnumType.STRING)
     private AnnouncementType type;
+
+    private String title;
 
     //private boolean isActive;
 
